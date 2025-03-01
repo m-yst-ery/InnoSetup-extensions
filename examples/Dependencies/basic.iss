@@ -1,2 +1,2 @@
 #include "..\base.iss"
-#include "..\..\src\Dependencies\index.iss"
+#include "..\..\dist\dependencies.iss"
