@@ -12,7 +12,7 @@
 
   #define Component_Namespace "Dependencies"
 
-  #define Component_OutputDir "..\..\..\dist\"
+  #define Component_OutputDir AddBackslash(SourcePath) + "..\..\..\dist\"
   #define Component_OutputFileName "dependencies.iss"
   
   #expr Component_Build

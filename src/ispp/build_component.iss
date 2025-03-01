@@ -23,7 +23,7 @@
 // Component_OutputFileName              : Name of the output file. Defaults to "_index.iss"
 //
 // ---- Remarks
-// Running "Component_Build" disables further compilation
+// Running "Component_Build" aborts the compilation after pre-processor. This results in a "2" exit code.
 // 
 // If a [Setup] section is defined in any file (also the root script) it *will* be included in the output. This can have weird consequences for the consumer and is not recommended.
 
@@ -85,5 +85,10 @@
   
   #expr ForceDirectories(Component_OutputDir)
     
-  #expr SaveToFile(AddBackslash(Component_OutputDir) + Component_OutputFileName)
+  #define BuildComponent_OutputFile = AddBackslash(Component_OutputDir) + Component_OutputFileName
+  #expr SaveToFile(BuildComponent_OutputFile)
+
+  #pragma message "Built component '" + Component_Namespace + "'. "
+  #pragma message "Output produced in '" + BuildComponent_OutputFile + "'. "
+  #pragma message "Compilation will now abort." 
 #endsub
